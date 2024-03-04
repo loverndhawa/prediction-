@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Roulette Prediction</h1>
+        <div class="buttons">
+            <form action="/record_result" method="post">
+                {% for number in range(37) %}
+                    <button type="submit" name="result" value="{{ number }}">{{ number }}</button>
+                {% endfor %}
+            </form>
+        </div>
+        <div class="history">
+            <h2>History</h2>
+            <ul>
+                {% for result in history %}
+                    <li>{{ result }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="prediction">
+            <h2>Prediction</h2>
+            <ul>
+                {% for number in prediction %}
+                    <li>{{ number }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
